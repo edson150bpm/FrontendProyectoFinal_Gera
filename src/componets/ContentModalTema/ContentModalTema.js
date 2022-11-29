@@ -63,7 +63,7 @@ export default function ContentModalTema(props) {
     }
   };
 
-  const editEditos = () => {
+  const editEditos = (value) => {
     setDataModalTema({...dataModalTema, descripcion: value})
   }
 
