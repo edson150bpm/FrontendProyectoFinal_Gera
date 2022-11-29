@@ -119,7 +119,7 @@ export default function ContentModalTema(props) {
               onInit={(evt, editor) => (editorRef.current = editor)}
               value={dataModalTema.descripcion}
               onEditorChange={editEditos}
-              initialValue={"<p>Descripcion<p/>"}
+              initialValue={dataModalTema.descripcion}
               init={{
                 height: 500,
                 menubar: false,
