@@ -40,20 +40,24 @@ export default function RegistroCurso(props) {
               <Button onClick={() => {
                 setModalShow(true)
               }} variant="success" style={{ margin: "1px" }}>Añadir curso</Button>
-              
+              <Link to={"/login"}>
+                <Button variant="danger" style={{ margin: "1px" }} onClick={() => localStorage.removeItem('user')}>
+                  Cerrar Sesión
+                </Button>
+              </Link>
             </>
           }
-          <Link to={"/"}>
+          {/* <Link to={"/"}>
             <Button variant="success" style={{ margin: "1px" }}>
               Volver
             </Button>
-          </Link>
+          </Link> */}
         </div>
         <div className="Card_Component">
           {
             courses?.map((course) => {
               console.log(course)
-              return <CardComponet course={course} origin = {"Maestro"} />
+              return <CardComponet course={course} origin={"Maestro"} />
             })
           }
         </div>

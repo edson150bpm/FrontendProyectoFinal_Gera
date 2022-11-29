@@ -12,7 +12,6 @@ export default function CardComponet({ course, origin = "home" }) {
   const navegation = useNavigate()
   const sentDataTema = async (event) => {
     try {
-
       localStorage.setItem("cursoActual", JSON.stringify(course))
       navegation("/registro-temas")
     } catch (error) {
@@ -31,9 +30,13 @@ export default function CardComponet({ course, origin = "home" }) {
         </Card.Text>
         {
           origin === "home" ? (
-            <Button variant="primary" style={{ width: "100%" }}>
-              Ver tema
-            </Button>
+            <Link to={"/registro-temas"}>
+              <Button variant="outline-success" style={{ width: "100%" }} onClick={() => {
+                sentDataTema()
+              }}>
+                Ver tema
+              </Button>
+            </Link>
           ) : (
             <Button variant="primary"
               style={{ width: "100%" }}

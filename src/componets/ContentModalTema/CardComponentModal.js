@@ -6,6 +6,7 @@ import axios from "axios";
 import swal from 'sweetalert';
 import { ContenidoTema } from "../../pages/ContenidoTema";
 import ContentModalTema from "./ContentModalTema";
+import DescargarMetaDoc from "../PdfDownload";
 
 export default function CardComponetModal(props) {
   const sesion = JSON.parse(localStorage.getItem("user"));
@@ -29,7 +30,7 @@ export default function CardComponetModal(props) {
     }
   }
 
-const onHide = () => setShow (false);
+  const onHide = () => setShow(false);
 
   const editarTema = (tema) => {
     setEdit(true);
@@ -39,18 +40,31 @@ const onHide = () => setShow (false);
   return (
     <Card style={{ width: "18rem", margin: "10px" }}>
       <Card.Body>
-        <Card.Title>{props.temacurso.nombreTema}</Card.Title>
+        <Card.Title>
+          <div style={{display:"flex"}}>
+            <div style={{diplay:"flex", flexGrow: 1, marginTop: 1}}>
+              {props.temacurso.nombreTema}
+            </div>
+            <div>
+              <DescargarMetaDoc tema={props.temacurso} />
+            </div>
+          </div>
+        </Card.Title>
         <Card.Text>
           {props.temacurso.contenido}
         </Card.Text>
         {sesion ? (
           <>
-            <Button variant="primary" style={{ width: "100%" }} onClick={() => editarTema(props.temacurso)}>
+            <Button variant="outline-primary" style={{ width: "100%", marginTop: 6 }} onClick={() => setModalShow(true)}>
+              Ver Tema
+            </Button>
+            <Button variant="primary" style={{ width: "100%", marginTop: 6 }} onClick={() => editarTema(props.temacurso)}>
               Editar
             </Button>
             <Button variant="danger" style={{ width: "100%", marginTop: 6 }} onClick={() => setModalShowDelete(!modalShowDelete)}>
               Eliminar
             </Button>
+            <i class="bi bi-file-earmark-arrow-down"></i>
           </>
         ) : (
           <Button variant="primary" style={{ width: "100%" }} onClick={() => setModalShow(true)}>
@@ -59,20 +73,20 @@ const onHide = () => setShow (false);
         )}
       </Card.Body>
 
-      {/* <ContenidoTema
+      <ContenidoTema
         show={modalShow}
         titulo={props.temacurso?.nombreTema}
         contenido={props.temacurso?.contenido}
         onHide={() => setModalShow(false)}
 
-      /> */}
-       <ContentModalTema
-       setLoadign = {setLoadign}
-       onHide = {onHide}
-       show={show}
-       editData={editData}
-       edit={edit}
-       />
+      />
+      <ContentModalTema
+        setLoadign={setLoadign}
+        onHide={onHide}
+        show={show}
+        editData={editData}
+        edit={edit}
+      />
 
       <Modal show={modalShowDelete} onHide={() => setModalShowDelete(!modalShowDelete)}>
         <Modal.Body>Estas seguro que desea eliminar</Modal.Body>
