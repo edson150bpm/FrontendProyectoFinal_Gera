@@ -48,7 +48,7 @@ export default function ContentModalTema(props) {
   const editTema = async (event) => {
     try {
       props.setLoadign(true);
-      const data = await axios.put("", {
+      const data = await axios.put("http://localhost:4000/api-v1/registro/tema", {
         id_tema: dataModalTema.id_tema,
         id_curso: dataModalTema.id_curso,
         nombreTema: dataModalTema.nombre,
