@@ -4,14 +4,14 @@ import Card from "react-bootstrap/Card";
 import Modal from "react-bootstrap/Modal";
 import axios from "axios";
 import swal from 'sweetalert';
-import { ContenidoTema } from "../../pages/ContenidoTema";
+// import { ContenidoTema } from "../../pages/ContenidoTema";
 import ContentModalTema from "./ContentModalTema";
 
 export default function CardComponetModal(props) {
   const sesion = JSON.parse(localStorage.getItem("user"));
   const [modalShow, setModalShow] = React.useState(false);
   const [editData, setEditData] = React.useState({});
-  const [loadign, setLoadign] = React.useState(false);
+  // const [loadign, setLoadign] = React.useState(false);
   const [show, setShow] = React.useState(false);
   const [modalShowDelete, setModalShowDelete] = React.useState(false);
   const [edit, setEdit] = useState(false);
@@ -69,7 +69,7 @@ export default function CardComponetModal(props) {
 
       /> */}
       <ContentModalTema
-        setLoadign={setLoadign}
+        setLoadign={props.setLoadign}
         onHide={onHide}
         show={show}
         editData={editData}

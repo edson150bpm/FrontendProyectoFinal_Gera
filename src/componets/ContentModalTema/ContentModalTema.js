@@ -47,14 +47,13 @@ export default function ContentModalTema(props) {
 
   const editTema = async (event) => {
     try {
-      props.setLoadign(true);
-      const data = await axios.put("http://localhost:4000/api-v1/registro/tema", {
+      await axios.put("http://localhost:4000/api-v1/registro/tema", {
         id_tema: dataModalTema.id_tema,
         id_curso: dataModalTema.id_curso,
         nombreTema: dataModalTema.nombre,
         contenido: dataModalTema.descripcion,
       });
-      props.setLoadign(false);
+      props.setLoadign(true);
       props.onHide();
       swal("Buen trabajo!", "Tus datos se enviaron correctamente", "success");
     } catch (error) {
@@ -114,7 +113,7 @@ export default function ContentModalTema(props) {
 
           <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
             <Form.Label>Descripcion</Form.Label>
-            
+
             <Editor
               tagName="descripcion"
               onInit={(evt, editor) => (editorRef.current = editor)}
