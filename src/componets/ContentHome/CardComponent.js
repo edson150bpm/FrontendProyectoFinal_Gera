@@ -26,7 +26,11 @@ export default function CardComponet({ course, origin = "home" }) {
         <Card.Title>{course.nombreCurso}</Card.Title>
 
         <Card.Text>
-          {course.descripcion_curso}
+        <div>
+            <h5 style={{ marginRight: "5px" }}>Descripcion:</h5>
+            <div dangerouslySetInnerHTML={{ __html: course.descripcion_curso}} style={{textOverflow: "ellipsis !important", overflow: "auto", height: "250px"}}>
+            </div>
+          </div>
         </Card.Text>
         {
           origin === "home" ? (
@@ -38,7 +42,7 @@ export default function CardComponet({ course, origin = "home" }) {
               </Button>
             </Link>
           ) : (
-            <Button variant="primary"
+            <Button variant="outline-secondary"
               style={{ width: "100%" }}
               onClick={() => {
                 sentDataTema()

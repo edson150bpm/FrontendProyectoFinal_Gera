@@ -79,7 +79,7 @@ export default function CardComponetModal(props) {
             <i class="bi bi-file-earmark-arrow-down"></i>
           </>
         ) : (
-          <Button variant="primary" style={{ width: "100%" }} onClick={() => setModalShow(true)}>
+          <Button variant="outline-primary" style={{ width: "100%" }} onClick={() => setModalShow(true)}>
             Ver tema
           </Button>
         )}

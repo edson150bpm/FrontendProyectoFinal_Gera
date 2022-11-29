@@ -82,11 +82,12 @@ export default function RegistroMaestro() {
                   }} />
               </Form.Group>
               <Button 
+              variant="outline-dark"
               style={{ width: "100%" }}
               onClick={() => {
                 sentDataRegisterTeacher()
               }}>
-                Iniciar Sesion
+                Registrate
               </Button>
             </Form>
           </div>

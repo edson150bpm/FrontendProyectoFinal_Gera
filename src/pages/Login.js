@@ -87,6 +87,7 @@ export default function Login() {
                   />
                 </Form.Group>
                 <Button
+                variant="outline-dark"
                   style={{ width: "100%" }}
                   onClick={() => {
                     sentDataLogin()
