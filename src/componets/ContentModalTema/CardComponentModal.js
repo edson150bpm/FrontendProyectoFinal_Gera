@@ -39,10 +39,19 @@ export default function CardComponetModal(props) {
   return (
     <Card style={{ width: "18rem", margin: "10px" }}>
       <Card.Body>
-        <Card.Title>{props.temacurso.nombreTema}</Card.Title>
+        <div style={{ display: "flex" }}>
+          <h5 style={{ marginRight: "5px" }}>
+            Tema:
+          </h5>
+          <Card.Title>
+            {props.temacurso.nombreTema}
+          </Card.Title>
+        </div>
         <Card.Text>
-          <div dangerouslySetInnerHTML={{ __html: props.temacurso.contenido}}>
-
+          <div>
+            <h5 style={{ marginRight: "5px" }}>Descripcion:</h5>
+            <div dangerouslySetInnerHTML={{ __html: props.temacurso.contenido }} style={{textOverflow: "ellipsis !important", overflow: "auto", height: "250px"}}>
+            </div>
           </div>
         </Card.Text>
         {sesion ? (
