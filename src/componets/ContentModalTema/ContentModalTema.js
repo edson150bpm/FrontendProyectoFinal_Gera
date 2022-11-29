@@ -9,6 +9,7 @@ import { Editor } from "@tinymce/tinymce-react";
 export default function ContentModalTema(props) {
   const editorRef = useRef(null);
   console.log(props.editData);
+  console.log(props.edit);
   const [dataModalTema, setDataModalTema] = useState({});
 
   const editDataModalTema = (event) => {
@@ -63,12 +64,12 @@ export default function ContentModalTema(props) {
   };
 
   useEffect(() => {
-    if (props.editData) {
+    if (props.edit) {
       setDataModalTema({
-        nombre: props.nombreTema,
-        descripcion: props.contenido,
-        id_curso: props.id_curso,
-        id_tema: props.id_tema,
+        nombre: props.editData.nombreTema,
+        descripcion: props.editData.contenido,
+        id_curso: props.editData.id_curso,
+        id_tema: props.editData.id_tema,
       });
     } else {
       setDataModalTema({

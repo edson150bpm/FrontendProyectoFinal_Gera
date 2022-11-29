@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Modal from "react-bootstrap/Modal";
@@ -14,6 +14,7 @@ export default function CardComponetModal(props) {
   const [loadign, setLoadign] = React.useState(false);
   const [show, setShow] = React.useState(false);
   const [modalShowDelete, setModalShowDelete] = React.useState(false);
+  const [edit, setEdit] = useState(false);
 
   const sentDataModalTemaDelete = async (event) => {
     try {
@@ -31,6 +32,7 @@ export default function CardComponetModal(props) {
 const onHide = () => setShow (false);
 
   const editarTema = (tema) => {
+    setEdit(true);
     setEditData(tema);
     setShow(true)
   }
@@ -57,18 +59,19 @@ const onHide = () => setShow (false);
         )}
       </Card.Body>
 
-      <ContenidoTema
+      {/* <ContenidoTema
         show={modalShow}
         titulo={props.temacurso?.nombreTema}
         contenido={props.temacurso?.contenido}
         onHide={() => setModalShow(false)}
 
-      />
+      /> */}
        <ContentModalTema
        setLoadign = {setLoadign}
        onHide = {onHide}
        show={show}
        editData={editData}
+       edit={edit}
        />
 
       <Modal show={modalShowDelete} onHide={() => setModalShowDelete(!modalShowDelete)}>
