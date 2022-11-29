@@ -113,6 +113,7 @@ export default function ContentModalTema(props) {
               tagName="descripcion"
               onInit={(evt, editor) => (editorRef.current = editor)}
               value={dataModalTema.descripcion}
+              onEditorChange={(value) => setDataModalTema({...dataModalTema, descripcion: value})}
               initialValue={"<p>Descripcion<p/>"}
               init={{
                 height: 500,
