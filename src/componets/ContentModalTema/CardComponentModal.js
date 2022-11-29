@@ -29,7 +29,7 @@ export default function CardComponetModal(props) {
     }
   }
 
-const onHide = () => setShow (false);
+  const onHide = () => setShow(false);
 
   const editarTema = (tema) => {
     setEdit(true);
@@ -41,7 +41,9 @@ const onHide = () => setShow (false);
       <Card.Body>
         <Card.Title>{props.temacurso.nombreTema}</Card.Title>
         <Card.Text>
-          {props.temacurso.contenido}
+          <div dangerouslySetInnerHTML={{ __html: props.temacurso.contenido}}>
+
+          </div>
         </Card.Text>
         {sesion ? (
           <>
@@ -66,13 +68,13 @@ const onHide = () => setShow (false);
         onHide={() => setModalShow(false)}
 
       /> */}
-       <ContentModalTema
-       setLoadign = {setLoadign}
-       onHide = {onHide}
-       show={show}
-       editData={editData}
-       edit={edit}
-       />
+      <ContentModalTema
+        setLoadign={setLoadign}
+        onHide={onHide}
+        show={show}
+        editData={editData}
+        edit={edit}
+      />
 
       <Modal show={modalShowDelete} onHide={() => setModalShowDelete(!modalShowDelete)}>
         <Modal.Body>Estas seguro que desea eliminar</Modal.Body>
