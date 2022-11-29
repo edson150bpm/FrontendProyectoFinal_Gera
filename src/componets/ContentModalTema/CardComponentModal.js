@@ -12,7 +12,7 @@ export default function CardComponetModal(props) {
   const sesion = JSON.parse(localStorage.getItem("user"));
   const [modalShow, setModalShow] = React.useState(false);
   const [editData, setEditData] = React.useState({});
-  const [loadign, setLoadign] = React.useState(false);
+  // const [loadign, setLoadign] = React.useState(false);
   const [show, setShow] = React.useState(false);
   const [modalShowDelete, setModalShowDelete] = React.useState(false);
   const [edit, setEdit] = useState(false);
@@ -50,8 +50,20 @@ export default function CardComponetModal(props) {
             </div>
           </div>
         </Card.Title>
+        <div style={{ display: "flex" }}>
+          <h5 style={{ marginRight: "5px" }}>
+            Tema:
+          </h5>
+          <Card.Title>
+            {props.temacurso.nombreTema}
+          </Card.Title>
+        </div>
         <Card.Text>
-          {props.temacurso.contenido}
+          <div>
+            <h5 style={{ marginRight: "5px" }}>Descripcion:</h5>
+            <div dangerouslySetInnerHTML={{ __html: props.temacurso.contenido }} style={{textOverflow: "ellipsis !important", overflow: "auto", height: "250px"}}>
+            </div>
+          </div>
         </Card.Text>
         {sesion ? (
           <>
@@ -81,7 +93,7 @@ export default function CardComponetModal(props) {
 
       />
       <ContentModalTema
-        setLoadign={setLoadign}
+        setLoadign={props.setLoadign}
         onHide={onHide}
         show={show}
         editData={editData}

@@ -16,9 +16,10 @@ export function ContenidoTema(props) {
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <p>
-                    {props.contenido}
-                </p>
+                <div dangerouslySetInnerHTML={{ __html: props.contenido }}>
+
+                </div>
+
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="danger" onClick={props.onHide}>
