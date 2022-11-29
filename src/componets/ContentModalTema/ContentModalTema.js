@@ -63,6 +63,10 @@ export default function ContentModalTema(props) {
     }
   };
 
+  const editEditos = () => {
+    setDataModalTema({...dataModalTema, descripcion: value})
+  }
+
   useEffect(() => {
     if (props.edit) {
       setDataModalTema({
@@ -107,14 +111,14 @@ export default function ContentModalTema(props) {
               }}
             />
           </Form.Group>
-          
+
           <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
             <Form.Label>Descripcion</Form.Label>
             <Editor
               tagName="descripcion"
               onInit={(evt, editor) => (editorRef.current = editor)}
               value={dataModalTema.descripcion}
-              onEditorChange={(value) => setDataModalTema({...dataModalTema, descripcion: value})}
+              onEditorChange={editEditos}
               initialValue={"<p>Descripcion<p/>"}
               init={{
                 height: 500,
