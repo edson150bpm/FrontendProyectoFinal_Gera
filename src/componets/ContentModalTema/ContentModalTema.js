@@ -114,12 +114,12 @@ export default function ContentModalTema(props) {
 
           <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
             <Form.Label>Descripcion</Form.Label>
+            
             <Editor
               tagName="descripcion"
               onInit={(evt, editor) => (editorRef.current = editor)}
               value={dataModalTema.descripcion}
               onEditorChange={editEditos}
-              initialValue={dataModalTema.descripcion}
               init={{
                 height: 500,
                 menubar: false,
