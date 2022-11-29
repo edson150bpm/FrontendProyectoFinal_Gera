@@ -107,6 +107,7 @@ export default function ContentModalTema(props) {
               }}
             />
           </Form.Group>
+          
           <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
             <Form.Label>Descripcion</Form.Label>
             <Editor
