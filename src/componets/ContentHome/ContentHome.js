@@ -5,8 +5,7 @@ import axios from "axios";
 import "./ContentHome.css";
 
 export default function ContentHome() {
-
-
+  const [modalShow, setModalShow] = React.useState(false);
   const [courses, setCourses] = useState([])
 
   const getDataHome = async () => {

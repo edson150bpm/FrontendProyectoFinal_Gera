@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import logoPotato from "../img/potato.png";
@@ -37,7 +37,11 @@ export default function Login() {
       console.log("Error", error)
       swal("Lo sentimos", "Datos incorrectos", "error");
     }
-  }
+  };
+
+  useEffect(() => {
+    localStorage.removeItem("user")
+  }, [])
 
   return (
     <div>

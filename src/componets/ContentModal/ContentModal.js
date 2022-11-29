@@ -29,6 +29,7 @@ export default function ContentModal(props) {
       })
       console.log("SaveModal", saveModal)
       props.onHide()
+      props.setLoading(true);
       swal("Buen trabajo!", "Tus datos se enviaron correctamente", "success");
     } catch (error) {
       console.log("Error", error)

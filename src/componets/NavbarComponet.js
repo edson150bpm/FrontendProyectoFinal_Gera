@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
@@ -9,6 +9,7 @@ import { Link } from "react-router-dom"
 import "./NavbarComponet.css"
 
 export default function NavbarComponet() {
+
   return (
     <div>
       <Navbar bg="light" expand="lg">
@@ -49,7 +50,7 @@ export default function NavbarComponet() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-    </div>
+    </div >
   )
 
 }

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
@@ -8,12 +8,8 @@ import { Editor } from '@tinymce/tinymce-react';
 
 export default function ContentModalTema(props) {
   const editorRef = useRef(null);
-  const logTema = () => {
-  };
-  const [dataModalTema, setDataModalTema] = useState({
-    nombre: "",
-    descripcion: ""
-  })
+  console.log(props.editData)
+  const [dataModalTema, setDataModalTema] = useState({});
 
   const editDataModalTema = (event) => {
     setDataModalTema({
@@ -33,6 +29,7 @@ export default function ContentModalTema(props) {
           contenido: editorRef.current.getContent,
           id_curso: cursoActual.id_curso
         })
+        props.setLoadign(true);
         props.onHide()
         swal("Buen trabajo!", "Tus datos se enviaron correctamente", "success");
       } else {
@@ -47,6 +44,22 @@ export default function ContentModalTema(props) {
   const editTema = (event) => {
     console.log(event.target.value)
   }
+
+  useEffect(() => {
+    if (props.editData) {
+      setDataModalTema({
+        
+      })
+    } else {
+      setDataModalTema(
+        {
+          nombre: "",
+          descripcion: ""
+        }
+      )
+    }
+  }, [props.editData])
+
   return (
     <Modal
       {...props}
@@ -67,6 +80,8 @@ export default function ContentModalTema(props) {
               type="email"
               name="nombre"
               placeholder="Ingresa solo letras"
+              value={dataModalTema.nombre}
+              initialValue={dataModalTema.nombre}
               autoFocus
               onChange={(event) => {
                 editDataModalTema(event)
@@ -77,7 +92,7 @@ export default function ContentModalTema(props) {
             <Editor
               tagName='descripcion'
               onInit={(evt, editor) => (editorRef.current = editor)}
-              initialValue="<p>This is the initial content of the editor.</p>"
+              initialValue={props.editData !== undefined ? "" : dataModalTema.descripcion}
               init={{
                 height: 500,
                 menubar: false,
